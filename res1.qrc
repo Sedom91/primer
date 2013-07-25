@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/im">
+        <file>image1.jpg</file>
+        <file>flag_en.jpg</file>
+        <file>im1.jpg</file>
+        <file>ima.jpg</file>
+        <file>image.jpg</file>
+        <file>passivebutton.jpg</file>
+        <file>imag.jpg</file>
+        <file>klavishi_en.qm</file>
+    </qresource>
+</RCC>
