@@ -50,7 +50,7 @@ public :
     QLabel * label_3;
 
 QPixmap pix ,pix_1;
-QPalette pal,pal_1,pal_2;
+QPalette pal,pal_1,pal_2,pal_3;
 
 QWidget * wgt;
 QWidget * pr;

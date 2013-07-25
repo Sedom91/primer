@@ -15,26 +15,24 @@ Singlechannel::Singlechannel(QWidget*parent)
     pix_1.load(":/im/passivebutton.jpg");
     pal.setBrush(QPalette::Background,QBrush(pix));
     pal_1.setBrush(QPalette::Background,QBrush(pix_1));
-
+    pal_3.setBrush(this->backgroundRole(),Qt::black);
     QGraphicsView * view = new QGraphicsView;
-    view->setFixedSize(420,230);
+    //view->setMaximumSize(400,200);
     pal_2.setBrush(view->backgroundRole(),Qt::black);
     view->setPalette(pal_2);
-
+    setPalette(pal_3);
     QGraphicsScene* scene = new QGraphicsScene;
     view->setScene(scene);
+    view->setFixedSize(400,180);
  //   scene->setPalette(pal_2);
 
-    // Add the vertical lines first, paint them red
-    for (int x=0; x<=500; x+=50)
-        scene->addLine(x,0,x,500, QPen(Qt::white));
+    for (int x=0; x<=400; x+=50)
+        scene->addLine(x,0,x,400, QPen(Qt::white));
 
-    // Now add the horizontal lines, paint them green
-    for (int y=0; y<=500; y+=50)
-        scene->addLine(0,y,500,y, QPen(Qt::white));
 
-    // Fit the view in the scene's bounding rect
-  //   view->fitInView(scene->itemsVBoundingRect());
+    for (int y=0; y<=400; y+=50)
+        scene->addLine(0,y,400,y, QPen(Qt::white));
+
 
     label =new QLabel   (tr("Режим"));
     label_1 = new QLabel(tr("Инверсия"));
@@ -42,11 +40,11 @@ Singlechannel::Singlechannel(QWidget*parent)
     label_3 = new QLabel(tr("Развертка"));
 
     menubar = new QMenuBar;
-    menubar->setWindowFlags(Qt::CustomizeWindowHint);
-    menubar->setParent(this);
-    menubar->show();
-    menu =  new QMenu(tr("Общие"));
 
+    //menubar->setWindowFlags(Qt::CustomizeWindowHint);
+    //menubar->show();
+    menu =  new QMenu(tr("Общие"));
+    scene->addWidget(menu);
     menubar->setFixedSize(60,25);
     menu->addAction(tr("Генератор"),this,SLOT(generator()));
     menu->addAction(tr("Приемник"),this,SLOT(priemnik()));
@@ -54,7 +52,11 @@ Singlechannel::Singlechannel(QWidget*parent)
     menu->addAction(tr("Обьект"),this,SLOT(object()));
     menu->addAction(tr("Настройки"),this,SLOT(nastroika()));
     menu->addAction(tr("Программа"),this,SLOT(programma()));
-    menubar->addMenu(menu);
+  //  scene->addWidget(menu);
+
+
+     menubar->addMenu(menu);
+      scene->addWidget(menubar);
 
     frame = new QFrame;
     frame_1 =new QFrame;
@@ -137,7 +139,7 @@ connect(box, SIGNAL(currentIndexChanged(QString)),this, SLOT(showPosts()));
     frame_3->layout()->addWidget(box_3);
 
    // frame_4->layout()->addWidget(menubar);
-    view->setAlignment(Qt::AlignCenter);
+  //  view->setAlignment(Qt::AlignCenter);
     frame_4->layout()->addWidget(view);
 
 
@@ -178,9 +180,8 @@ connect(box, SIGNAL(currentIndexChanged(QString)),this, SLOT(showPosts()));
 
     QVBoxLayout *bvlLayout = new QVBoxLayout;
     bvlLayout->addWidget(frame_4);
-    //bvlLayout->addLayout(hgrap_layout);
-    bvlLayout->addSpacing(-180);
-   // bvlLayout->addStretch();
+     bvlLayout->addSpacing(-180);
+
 
     hsingleLayout->addLayout(spinBoxLayout1);
     hsingleLayout->addLayout(spinBoxLayout2);
