@@ -46,11 +46,6 @@ Singlechannel::Singlechannel(QWidget*parent)
     menu =  new QMenu(tr("Общие"));
     scene->addWidget(menu);
     menu->hide();
-//    if (menu->isHidden()){
-
-//        qDebug()<<"test2";
-//    }
-
     menubar->setFixedSize(60,25);
     menu->addAction(tr("Генератор"),this,SLOT(generator()));
     menu->addAction(tr("Приемник"),this,SLOT(priemnik()));
